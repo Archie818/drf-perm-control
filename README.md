@@ -52,13 +52,13 @@ class MyView(APIView):
 
 The `perm_control` attribute maps HTTP methods to Django permissions:
 
-| HTTP Method | Django Permission |
-|-------------|-------------------|
-| GET | `{app}.view_{model}` |
-| POST | `{app}.add_{model}` |
-| PUT | `{app}.change_{model}` |
-| PATCH | `{app}.change_{model}` |
-| DELETE | `{app}.delete_{model}` |
+| HTTP Method | Django Permission      |
+| ----------- | ---------------------- |
+| GET         | `{app}.view_{model}`   |
+| POST        | `{app}.add_{model}`    |
+| PUT         | `{app}.change_{model}` |
+| PATCH       | `{app}.change_{model}` |
+| DELETE      | `{app}.delete_{model}` |
 
 ## Customization
 
@@ -71,10 +71,10 @@ from drf_perm_control import ApiPermission
 class CustomApiPermission(ApiPermission):
     # Cache timeout in seconds (default: 300)
     cache_timeout = 600  # 10 minutes
-    
+
     # Cache key prefix (default: "user_perms")
     cache_key_prefix = "my_app_perms"
-    
+
     # User types that bypass permission checks
     admin_user_types = ["ADMIN", "DEV"]
 ```
@@ -140,12 +140,14 @@ CACHES = {
 Main permission class for DRF views.
 
 **Attributes:**
+
 - `permission_map` - Dict mapping HTTP methods to permission string templates
 - `cache_timeout` - Cache timeout in seconds (default: 300)
 - `cache_key_prefix` - Prefix for cache keys (default: "user_perms")
 - `admin_user_types` - List of user types that bypass permission checks
 
 **Methods:**
+
 - `has_permission(request, view)` - Check view-level permission
 - `has_object_permission(request, view, obj)` - Check object-level permission
 
@@ -154,6 +156,7 @@ Main permission class for DRF views.
 Mixin providing permission control utilities.
 
 **Methods:**
+
 - `get_cache_key(user_id)` - Generate cache key for user permissions
 - `get_permission_string(method, perm_control)` - Get required permission string
 - `get_cached_permissions(user)` - Get user permissions from cache or database
@@ -174,7 +177,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/drf-perm-control.git
+git clone https://github.com/Archie818/drf-perm-control.git
 cd drf-perm-control
 
 # Install development dependencies
@@ -198,4 +201,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
-
